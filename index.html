@@ -2,124 +2,211 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Vigyan Bhairav • 112 ways</title>
-    <meta name="description" content="Discover the 112 meditation techniques from the Vigyan Bhairav Tantra, reimagined for modern life. Find your practice through playful guidance.">
-    <!-- Fonts & Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigyan Bhairav · 112 ways</title>
+    <meta name="description" content="A cosmic meditation platform. Ancient tantra techniques for the modern seeker.">
+    <!-- Fonts: Korean-friendly clean sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style-korean.css">
 </head>
 <body>
+    <!-- Cosmic background animation (subtle stars) -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
     <div class="container">
-
-        <!-- ========== HEADER with little shiva ========== -->
-        <header class="header">
+        <!-- Header with glass effect -->
+        <header class="glass-header">
             <div class="logo-area">
-                <div class="little-shiva" id="shiva">
-                    <span class="shiva-emoji" role="img" aria-label="Little Shiva">👶🕉️</span>
-                    <div class="speech-bubble" id="shivaBubble">Just watch...</div>
-                </div>
                 <h1>VIGYAN BHAIRAV</h1>
-                <p class="tagline">the 112 ways • ancient wisdom for modern minds</p>
+                <p class="tagline">the 112 ways</p>
             </div>
             <nav class="top-nav">
-                <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
-                <a href="#" aria-label="Profile"><i class="fas fa-user-circle"></i></a>
+                <a href="#" class="active">Home</a>
+                <a href="#">Paths</a>
+                <a href="#">Techniques</a>
+                <a href="#">Practice</a>
+                <a href="#">Cosmos</a>
+                <a href="#" class="icon-link"><i class="fas fa-search"></i></a>
+                <a href="#" class="icon-link"><i class="fas fa-user-astronaut"></i></a>
             </nav>
         </header>
 
-        <!-- ========== MAIN CTA ========== -->
-        <div class="cta-section">
-            <button class="btn-primary" id="findTechBtn"><i class="fas fa-compass"></i> Find Your Technique</button>
-        </div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="chip">✨ Ancient · Modern · Cosmic</span>
+                <h2>Explore Your <span class="gradient-text">Inner Cosmos</span></h2>
+                <p class="hero-sub">112 meditation techniques from the Vigyan Bhairav Tantra,<br>reimagined for the modern seeker.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">Start Journey <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn-outline">Explore Techniques</a>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <!-- Simple cosmic illustration via CSS -->
+                <div class="orbit-circle"></div>
+                <div class="orbit-circle small"></div>
+                <div class="floating-shiva">👶🕉️</div>
+            </div>
+        </section>
 
-        <!-- ========== PERSONA SELECTOR (Who's inside you today?) ========== -->
-        <section class="persona-section" id="personaSection">
-            <h2><i class="fas fa-smile-wink"></i> Who's inside you today?</h2>
-            <div class="persona-grid" id="personaGrid">
-                <!-- each persona-card uses emoji + label, and data-persona attribute -->
-                <div class="persona-card" data-persona="student" tabindex="0" role="button" aria-label="Student persona">
-                    <div class="persona-icon">👨‍🎓</div>
-                    <span>Student</span>
+        <!-- Quick Paths / Personas (Korean style chips) -->
+        <section class="quick-paths">
+            <h3>Choose your path <span class="arrow">→</span></h3>
+            <div class="path-grid">
+                <div class="path-card" data-path="focus">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Focus</span>
+                    <small>for students & deep work</small>
                 </div>
-                <div class="persona-card" data-persona="employee" tabindex="0" role="button" aria-label="Employee persona">
-                    <div class="persona-icon">👔</div>
-                    <span>Employee</span>
+                <div class="path-card" data-path="calm">
+                    <i class="fas fa-leaf"></i>
+                    <span>Calm</span>
+                    <small>stress relief</small>
                 </div>
-                <div class="persona-card" data-persona="ceo" tabindex="0" role="button" aria-label="CEO / Officer persona">
-                    <div class="persona-icon">💼</div>
-                    <span>CEO</span>
+                <div class="path-card" data-path="aware">
+                    <i class="fas fa-eye"></i>
+                    <span>Awareness</span>
+                    <small>observe thoughts</small>
                 </div>
-                <div class="persona-card" data-persona="seeker" tabindex="0" role="button" aria-label="Spiritual seeker persona">
-                    <div class="persona-icon">🧘</div>
-                    <span>Seeker</span>
+                <div class="path-card" data-path="deep">
+                    <i class="fas fa-moon"></i>
+                    <span>Deep</span>
+                    <small>inner silence</small>
                 </div>
-                <div class="persona-card" data-persona="anxious" tabindex="0" role="button" aria-label="Anxious persona">
-                    <div class="persona-icon">😥</div>
-                    <span>Anxious</span>
+                <div class="path-card" data-path="energy">
+                    <i class="fas fa-bolt"></i>
+                    <span>Energy</span>
+                    <small>kundalini</small>
                 </div>
-                <div class="persona-card" data-persona="overthinker" tabindex="0" role="button" aria-label="Overthinking persona">
-                    <div class="persona-icon">🤔</div>
-                    <span>Overthinker</span>
-                </div>
-                <div class="persona-card" data-persona="beginner" tabindex="0" role="button" aria-label="Beginner persona">
-                    <div class="persona-icon">🆕</div>
-                    <span>Beginner</span>
-                </div>
-                <div class="persona-card" data-persona="heart" tabindex="0" role="button" aria-label="Heart-oriented persona">
-                    <div class="persona-icon">❤️</div>
+                <div class="path-card" data-path="heart">
+                    <i class="fas fa-heart"></i>
                     <span>Heart</span>
+                    <small>love & devotion</small>
                 </div>
             </div>
         </section>
 
-        <!-- ========== DYNAMIC RECOMMENDATIONS (hidden until persona selected) ========== -->
-        <section class="recommendations" id="recommendations" style="display: none;" aria-live="polite">
-            <h3>✨ recommended for you</h3>
-            <div class="tech-grid" id="recGrid"></div>
-        </section>
-
-        <!-- ========== TRENDING / FEATURED TECHNIQUES ========== -->
-        <section class="featured-section">
-            <h2><i class="fas fa-fire"></i> trending techniques</h2>
-            <div class="tech-grid" id="featuredGrid">
-                <!-- cards will be populated by JavaScript, but we can keep static fallback -->
-            </div>
-            <div class="view-all">
-                <a href="#" class="view-all-link">View all 112 techniques <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </section>
-
-        <!-- ========== DAILY INSPIRATION with little lao tzu ========== -->
-        <section class="daily">
-            <div class="daily-card">
-                <div class="little-lao">
-                    <span class="lao-emoji" role="img" aria-label="Little Lao Tzu">👶🌊</span>
-                    <div class="speech-bubble">"Be like water, little one."</div>
+        <!-- Little Guides (character cards) -->
+        <section class="little-guides">
+            <h3>Today's little guides <span class="arrow">→</span></h3>
+            <div class="guides-grid">
+                <div class="guide-card">
+                    <div class="guide-avatar">👶🕉️</div>
+                    <div class="guide-message">
+                        "Just watch — like watching clouds."
+                    </div>
+                    <span class="guide-name">Little Shiva</span>
                 </div>
-                <p class="daily-quote">Today's gentle reminder: <strong>Technique #68 – Transforming Anger</strong></p>
-                <a href="#" class="btn-secondary">Flow with it <i class="fas fa-arrow-right"></i></a>
+                <div class="guide-card">
+                    <div class="guide-avatar">👶🌊</div>
+                    <div class="guide-message">
+                        "Be like water, little one."
+                    </div>
+                    <span class="guide-name">Little Lao Tzu</span>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-avatar">👶🌀</div>
+                    <div class="guide-message">
+                        "Energy is dancing within you."
+                    </div>
+                    <span class="guide-name">Tiny Tantrika</span>
+                </div>
             </div>
         </section>
 
-        <!-- ========== FOOTER NAVIGATION ========== -->
-        <footer class="footer">
-            <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
-            <a href="#"><i class="fas fa-compass"></i><span>Find</span></a>
-            <a href="#"><i class="fas fa-layer-group"></i><span>Library</span></a>
-            <a href="#"><i class="fas fa-heart"></i><span>Saved</span></a>
-            <a href="#"><i class="fas fa-cog"></i><span>Settings</span></a>
+        <!-- Featured Techniques (clean list style) -->
+        <section class="featured-techniques">
+            <div class="section-header">
+                <h3>Featured techniques</h3>
+                <a href="#" class="view-all">View all 112 <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="tech-list">
+                <div class="tech-list-item">
+                    <span class="tech-number">#15</span>
+                    <div class="tech-info">
+                        <h4>Witnessing the Breath</h4>
+                        <span class="tech-tags">focus · calm · beginner</span>
+                    </div>
+                    <span class="tech-duration">5-15 min</span>
+                    <a href="technique-15.html" class="tech-action"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="tech-list-item">
+                    <span class="tech-number">#42</span>
+                    <div class="tech-info">
+                        <h4>The Pause Between Breaths</h4>
+                        <span class="tech-tags">silence · overthinking · advanced</span>
+                    </div>
+                    <span class="tech-duration">5-15 min</span>
+                    <a href="technique-42.html" class="tech-action"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="tech-list-item">
+                    <span class="tech-number">#3</span>
+                    <div class="tech-info">
+                        <h4>The Heart Center</h4>
+                        <span class="tech-tags">heart · love · calm</span>
+                    </div>
+                    <span class="tech-duration">5-15 min</span>
+                    <a href="technique-3.html" class="tech-action"><i class="fas fa-play"></i></a>
+                </div>
+                <div class="tech-list-item">
+                    <span class="tech-number">#48</span>
+                    <div class="tech-info">
+                        <h4>The Delight of Meeting</h4>
+                        <span class="tech-tags">emotion · seeker · joy</span>
+                    </div>
+                    <span class="tech-duration">2-10 min</span>
+                    <a href="technique-48.html" class="tech-action"><i class="fas fa-play"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Reflection / Quote -->
+        <section class="daily-reflection">
+            <div class="reflection-card">
+                <span class="quote-mark">"</span>
+                <p class="quote">Awareness is the greatest transformation.<br>Meditation is not about controlling the mind.<br>It is about observing it.</p>
+                <p class="quote-author">— Osho</p>
+                <div class="reflection-footer">
+                    <span class="chip">daily reflection</span>
+                    <a href="#" class="btn-text">Share <i class="fas fa-share"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Practice CTA -->
+        <section class="practice-cta">
+            <div class="cta-content">
+                <h3>Ready to begin?</h3>
+                <p>Choose a duration and start your practice with a gentle timer.</p>
+                <div class="timer-options">
+                    <a href="#" class="timer-pill" data-minutes="5">5 min</a>
+                    <a href="#" class="timer-pill" data-minutes="10">10 min</a>
+                    <a href="#" class="timer-pill" data-minutes="15">15 min</a>
+                    <a href="#" class="timer-pill" data-minutes="20">20 min</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-minimal">
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Paths</a>
+                <a href="#">Techniques</a>
+                <a href="#">Practice</a>
+                <a href="#">Cosmos</a>
+            </div>
+            <p class="footer-copyright">© 2026 Vigyan Bhairav · 112 ways</p>
         </footer>
-
-        <!-- ripple effect container (for js) -->
-        <div class="ripple-container"></div>
     </div>
 
-    <!-- Main JavaScript -->
-    <script src="script.js"></script>
+    <script src="script-korean.js"></script>
 </body>
-</html>
+    </html>
