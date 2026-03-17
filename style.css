@@ -57,10 +57,10 @@ body {
 
 .hero {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 80px 8%;
-  flex-wrap: wrap;
+  padding: 120px 8%;
+  text-align: center;
 }
 
 .hero-text {
