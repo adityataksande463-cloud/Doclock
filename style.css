@@ -569,3 +569,68 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-mint);
   }
+/* Technique detail page */
+.technique-detail {
+    margin-top: 20px;
+}
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-mint);
+    margin-bottom: 20px;
+}
+.tech-number-big {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-yellow);
+    line-height: 1;
+}
+.tech-header h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+.steps-list, .why-list {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+.steps-list li, .why-list li {
+    margin-bottom: 8px;
+}
+.essence-card p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-light);
+}
+.timer-card {
+    text-align: center;
+}
+.timer-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.timer-btn {
+    background: var(--bg-deep);
+    border: 2px solid var(--accent-yellow);
+    color: var(--accent-yellow);
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.timer-btn:hover {
+    background: var(--accent-yellow);
+    color: var(--bg-deep);
+}
+.related-section {
+    margin-top: 40px;
+}
+.mini-card {
+    padding: 15px;
+}
+.mini-card h4 {
+    font-size: 1rem;
+}
