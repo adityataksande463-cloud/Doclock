@@ -1,81 +1,192 @@
-// START BUTTON SCROLL EFFECT
+// ===============================
+// SMOOTH SCROLL NAVIGATION
+// ===============================
 
-document.querySelector(".start-btn").addEventListener("click", function () {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    document.querySelector(".techniques").scrollIntoView({
-        behavior: "smooth"
-    });
+anchor.addEventListener("click", function(e){
+
+e.preventDefault();
+
+document.querySelector(this.getAttribute("href")).scrollIntoView({
+behavior:"smooth"
+});
+
+});
 
 });
 
 
 
-// TECHNIQUE CARD CLICK EFFECT
+// ===============================
+// SHOOTING STARS EFFECT
+// ===============================
 
-const cards = document.querySelectorAll(".tech-card");
+function createShootingStar(){
 
-cards.forEach(card => {
+const star = document.createElement("div");
 
-    card.addEventListener("click", () => {
+star.classList.add("shooting-star");
 
-        alert("This technique page will open here in the future.");
+star.style.top = Math.random()*window.innerHeight+"px";
+star.style.left = Math.random()*window.innerWidth+"px";
 
-    });
+document.body.appendChild(star);
+
+setTimeout(()=>{
+star.remove();
+},3000);
+
+}
+
+setInterval(createShootingStar,4000);
+
+
+
+// ===============================
+// PATH SELECTION INTERACTION
+// ===============================
+
+const pathCards = document.querySelectorAll(".path-card");
+
+pathCards.forEach(card=>{
+
+card.addEventListener("click",()=>{
+
+const path = card.innerText;
+
+alert("You selected the "+path+" path. Recommended meditation techniques will appear here.");
+
+});
 
 });
 
 
 
-// FLOATING PARTICLES BACKGROUND
+// ===============================
+// TECHNIQUE PRACTICE BUTTONS
+// ===============================
 
-function createParticle() {
+const techButtons = document.querySelectorAll(".tech-btn");
 
-    const particle = document.createElement("div");
+techButtons.forEach(btn=>{
 
-    particle.classList.add("particle");
+btn.addEventListener("click",()=>{
 
-    particle.style.left = Math.random() * window.innerWidth + "px";
+const technique = btn.parentElement.querySelector("h3").innerText;
 
-    particle.style.animationDuration = Math.random() * 5 + 5 + "s";
+alert("Starting practice: "+technique);
 
-    document.body.appendChild(particle);
+});
+
+});
 
 
-    setTimeout(() => {
-        particle.remove();
-    }, 10000);
+
+// ===============================
+// MEDITATION TIMER
+// ===============================
+
+const practiceButtons = document.querySelectorAll(".practice-btn");
+
+practiceButtons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+let minutes = parseInt(btn.innerText);
+
+startMeditation(minutes);
+
+});
+
+});
+
+
+
+function startMeditation(minutes){
+
+let seconds = minutes * 60;
+
+alert("Meditation started for "+minutes+" minutes");
+
+const timer = setInterval(()=>{
+
+seconds--;
+
+if(seconds<=0){
+
+clearInterval(timer);
+
+alert("Meditation complete. Take a deep breath.");
+
+}
+
+},1000);
 
 }
 
 
 
-// CREATE PARTICLES CONTINUOUSLY
+// ===============================
+// COSMIC FLOATING PARTICLES
+// ===============================
 
-setInterval(createParticle, 800);
-/* FLOATING PARTICLES */
+function createParticle(){
 
-.particle {
+const particle = document.createElement("div");
 
-  position: fixed;
-  bottom: -10px;
-  width: 6px;
-  height: 6px;
-  background: rgba(108, 99, 255, 0.3);
-  border-radius: 50%;
-  animation: floatUp linear forwards;
+particle.classList.add("cosmic-particle");
+
+particle.style.left = Math.random()*window.innerWidth+"px";
+
+particle.style.animationDuration = (Math.random()*10+10)+"s";
+
+document.body.appendChild(particle);
+
+setTimeout(()=>{
+particle.remove();
+},20000);
 
 }
 
-@keyframes floatUp {
+setInterval(createParticle,2000);
 
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
 
-  to {
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
+
+// ===============================
+// HERO BUTTON INTERACTION
+// ===============================
+
+const startButton = document.querySelector(".primary-btn");
+
+if(startButton){
+
+startButton.addEventListener("click",()=>{
+
+document.querySelector("#paths").scrollIntoView({
+behavior:"smooth"
+});
+
+});
+
+}
+
+
+
+// ===============================
+// SECONDARY BUTTON
+// ===============================
+
+const exploreButton = document.querySelector(".secondary-btn");
+
+if(exploreButton){
+
+exploreButton.addEventListener("click",()=>{
+
+document.querySelector("#techniques").scrollIntoView({
+behavior:"smooth"
+});
+
+});
 
 }
