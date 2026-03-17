@@ -1,304 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Inner Consciousness | Meditation Techniques</title>
-
-  <meta name="description" content="Explore powerful meditation techniques for awareness, focus, and inner clarity.">
-
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Vigyan Bhairav • 112 ways</title>
+    <meta name="description" content="Discover the 112 meditation techniques from the Vigyan Bhairav Tantra, reimagined for modern life. Find your practice through playful guidance.">
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<div class="cosmic-background">
+    <div class="container">
+
+        <!-- ========== HEADER with little shiva ========== -->
+        <header class="header">
+            <div class="logo-area">
+                <div class="little-shiva" id="shiva">
+                    <span class="shiva-emoji" role="img" aria-label="Little Shiva">👶🕉️</span>
+                    <div class="speech-bubble" id="shivaBubble">Just watch...</div>
+                </div>
+                <h1>VIGYAN BHAIRAV</h1>
+                <p class="tagline">the 112 ways • ancient wisdom for modern minds</p>
+            </div>
+            <nav class="top-nav">
+                <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
+                <a href="#" aria-label="Profile"><i class="fas fa-user-circle"></i></a>
+            </nav>
+        </header>
+
+        <!-- ========== MAIN CTA ========== -->
+        <div class="cta-section">
+            <button class="btn-primary" id="findTechBtn"><i class="fas fa-compass"></i> Find Your Technique</button>
+        </div>
+
+        <!-- ========== PERSONA SELECTOR (Who's inside you today?) ========== -->
+        <section class="persona-section" id="personaSection">
+            <h2><i class="fas fa-smile-wink"></i> Who's inside you today?</h2>
+            <div class="persona-grid" id="personaGrid">
+                <!-- each persona-card uses emoji + label, and data-persona attribute -->
+                <div class="persona-card" data-persona="student" tabindex="0" role="button" aria-label="Student persona">
+                    <div class="persona-icon">👨‍🎓</div>
+                    <span>Student</span>
+                </div>
+                <div class="persona-card" data-persona="employee" tabindex="0" role="button" aria-label="Employee persona">
+                    <div class="persona-icon">👔</div>
+                    <span>Employee</span>
+                </div>
+                <div class="persona-card" data-persona="ceo" tabindex="0" role="button" aria-label="CEO / Officer persona">
+                    <div class="persona-icon">💼</div>
+                    <span>CEO</span>
+                </div>
+                <div class="persona-card" data-persona="seeker" tabindex="0" role="button" aria-label="Spiritual seeker persona">
+                    <div class="persona-icon">🧘</div>
+                    <span>Seeker</span>
+                </div>
+                <div class="persona-card" data-persona="anxious" tabindex="0" role="button" aria-label="Anxious persona">
+                    <div class="persona-icon">😥</div>
+                    <span>Anxious</span>
+                </div>
+                <div class="persona-card" data-persona="overthinker" tabindex="0" role="button" aria-label="Overthinking persona">
+                    <div class="persona-icon">🤔</div>
+                    <span>Overthinker</span>
+                </div>
+                <div class="persona-card" data-persona="beginner" tabindex="0" role="button" aria-label="Beginner persona">
+                    <div class="persona-icon">🆕</div>
+                    <span>Beginner</span>
+                </div>
+                <div class="persona-card" data-persona="heart" tabindex="0" role="button" aria-label="Heart-oriented persona">
+                    <div class="persona-icon">❤️</div>
+                    <span>Heart</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== DYNAMIC RECOMMENDATIONS (hidden until persona selected) ========== -->
+        <section class="recommendations" id="recommendations" style="display: none;" aria-live="polite">
+            <h3>✨ recommended for you</h3>
+            <div class="tech-grid" id="recGrid"></div>
+        </section>
+
+        <!-- ========== TRENDING / FEATURED TECHNIQUES ========== -->
+        <section class="featured-section">
+            <h2><i class="fas fa-fire"></i> trending techniques</h2>
+            <div class="tech-grid" id="featuredGrid">
+                <!-- cards will be populated by JavaScript, but we can keep static fallback -->
+            </div>
+            <div class="view-all">
+                <a href="#" class="view-all-link">View all 112 techniques <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- ========== DAILY INSPIRATION with little lao tzu ========== -->
+        <section class="daily">
+            <div class="daily-card">
+                <div class="little-lao">
+                    <span class="lao-emoji" role="img" aria-label="Little Lao Tzu">👶🌊</span>
+                    <div class="speech-bubble">"Be like water, little one."</div>
+                </div>
+                <p class="daily-quote">Today's gentle reminder: <strong>Technique #68 – Transforming Anger</strong></p>
+                <a href="#" class="btn-secondary">Flow with it <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- ========== FOOTER NAVIGATION ========== -->
+        <footer class="footer">
+            <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="#"><i class="fas fa-compass"></i><span>Find</span></a>
+            <a href="#"><i class="fas fa-layer-group"></i><span>Library</span></a>
+            <a href="#"><i class="fas fa-heart"></i><span>Saved</span></a>
+            <a href="#"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </footer>
+
+        <!-- ripple effect container (for js) -->
+        <div class="ripple-container"></div>
+    </div>
 
-<div class="stars"></div>
-
-<div class="twinkling"></div>
-
-<div class="planet"></div>
-
-<div class="blackhole"></div>
-
-</div>
-<!-- NAVBAR -->
-
-<header>
-
-<nav class="navbar">
-
-<div class="logo">
-Inner Consciousness
-</div>
-
-<ul class="nav-menu">
-
-<li><a href="#home">Home</a></li>
-<li><a href="#paths">Paths</a></li>
-<li><a href="#techniques">Techniques</a></li>
-<li><a href="#practice">Practice</a></li>
-<li><a href="#philosophy">Philosophy</a></li>
-
-</ul>
-
-<button class="nav-button">
-Start Practice
-</button>
-
-</nav>
-
-</header>
-
-
-
-<!-- HERO SECTION -->
-
-<section id="home" class="hero">
-
-<div class="hero-content">
-
-<h1>
-Explore Your Inner Awareness
-</h1>
-
-<p>
-A modern meditation platform inspired by ancient techniques.
-Choose your path and discover methods to quiet the mind,
-improve focus, and explore consciousness.
-</p>
-
-<div class="hero-buttons">
-
-<button class="primary-btn">
-Start Journey
-</button>
-
-<button class="secondary-btn">
-Explore Techniques
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- USER PATH SELECTION -->
-
-<section id="paths" class="paths">
-
-<h2>
-Choose Your Path
-</h2>
-
-<p class="section-subtitle">
-Select your intention and we will guide you to the right techniques.
-</p>
-
-<div class="path-grid">
-
-<div class="path-card">
-<h3>Focus</h3>
-<p>For students and deep work.</p>
-</div>
-
-<div class="path-card">
-<h3>Stress Relief</h3>
-<p>Calm the mind and release tension.</p>
-</div>
-
-<div class="path-card">
-<h3>Self Awareness</h3>
-<p>Observe thoughts and emotions.</p>
-</div>
-
-<div class="path-card">
-<h3>Deep Meditation</h3>
-<p>Explore deeper consciousness.</p>
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- TECHNIQUES SECTION -->
-
-<section id="techniques" class="techniques">
-
-<h2>
-Meditation Techniques
-</h2>
-
-<p class="section-subtitle">
-Explore powerful awareness practices.
-</p>
-
-<div class="tech-grid">
-
-<div class="tech-card">
-
-<h3>Watch the Breath</h3>
-
-<p>
-Observe your breathing without controlling it.
-A simple technique that brings awareness to the present moment.
-</p>
-
-<button class="tech-btn">
-Practice
-</button>
-
-</div>
-
-
-<div class="tech-card">
-
-<h3>Observe Thoughts</h3>
-
-<p>
-Watch thoughts arise and disappear without judgement.
-Discover the silent witness within.
-</p>
-
-<button class="tech-btn">
-Practice
-</button>
-
-</div>
-
-
-<div class="tech-card">
-
-<h3>Inner Silence</h3>
-
-<p>
-Let the mind settle naturally and experience the space between thoughts.
-</p>
-
-<button class="tech-btn">
-Practice
-</button>
-
-</div>
-
-
-<div class="tech-card">
-
-<h3>Listening Meditation</h3>
-
-<p>
-Become aware of surrounding sounds without labeling them.
-Pure listening creates deep presence.
-</p>
-
-<button class="tech-btn">
-Practice
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- PRACTICE SECTION -->
-
-<section id="practice" class="practice">
-
-<h2>
-Start a Meditation Session
-</h2>
-
-<p class="section-subtitle">
-Choose a duration and begin your practice.
-</p>
-
-<div class="practice-options">
-
-<button class="practice-btn">5 Minutes</button>
-<button class="practice-btn">10 Minutes</button>
-<button class="practice-btn">20 Minutes</button>
-
-</div>
-
-</section>
-
-
-
-<!-- PHILOSOPHY SECTION -->
-
-<section id="philosophy" class="philosophy">
-
-<h2>
-Daily Reflection
-</h2>
-
-<blockquote>
-
-"Awareness is the greatest transformation."
-
-</blockquote>
-
-<p class="reflection-text">
-
-Meditation is not about controlling the mind.
-It is about observing it.
-
-</p>
-
-</section>
-
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="footer-content">
-
-<h3>
-Inner Consciousness
-</h3>
-
-<p>
-A space to explore meditation, awareness, and inner clarity.
-</p>
-
-<ul class="footer-links">
-
-<li><a href="#">About</a></li>
-<li><a href="#">Techniques</a></li>
-<li><a href="#">Practice</a></li>
-
-</ul>
-
-</div>
-
-<p class="copyright">
-
-© 2026 Inner Consciousness
-
-</p>
-
-</footer>
-
-
-
-<script src="script.js"></script>
-
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
 </body>
-
 </html>
