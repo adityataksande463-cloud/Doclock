@@ -1,3 +1,144 @@
+/* COSMIC BACKGROUND */
+
+body{
+background: black;
+color:white;
+overflow-x:hidden;
+}
+
+
+/* background container */
+
+.cosmic-background{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-1;
+
+overflow:hidden;
+
+}
+
+
+/* stars */
+
+.stars{
+
+position:absolute;
+width:200%;
+height:200%;
+
+background:url("https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png");
+
+animation:starsMove 200s linear infinite;
+
+opacity:0.8;
+
+}
+
+@keyframes starsMove{
+
+from{transform:translateY(0);}
+to{transform:translateY(-1000px);}
+
+}
+
+
+/* twinkling stars */
+
+.twinkling{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+background:radial-gradient(white 1px, transparent 1px);
+
+background-size:3px 3px;
+
+opacity:0.3;
+
+animation:twinkle 4s infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+from{opacity:0.2;}
+to{opacity:0.6;}
+
+}
+
+
+/* planet */
+
+.planet{
+
+position:absolute;
+
+width:200px;
+height:200px;
+
+border-radius:50%;
+
+background:radial-gradient(circle at 30% 30%, #6fa8ff, #1c2a5e);
+
+top:20%;
+right:10%;
+
+box-shadow:0 0 40px #4c6fff;
+
+animation:planetFloat 20s infinite ease-in-out;
+
+}
+
+@keyframes planetFloat{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(40px);}
+100%{transform:translateY(0);}
+
+}
+
+
+/* black hole */
+
+.blackhole{
+
+position:absolute;
+
+width:150px;
+height:150px;
+
+border-radius:50%;
+
+background:black;
+
+box-shadow:
+
+0 0 20px purple,
+0 0 60px violet,
+inset 0 0 30px black;
+
+bottom:15%;
+left:15%;
+
+animation:spin 10s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+
+}
 /* RESET DEFAULT BROWSER STYLES */
 
 * {
