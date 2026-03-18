@@ -3,28 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigyan Bhairav · 112 ways</title>
-    <meta name="description" content="A cosmic meditation platform. Ancient tantra techniques for the modern seeker.">
-    <!-- Fonts: Korean-friendly clean sans -->
+    <title>Vigyan Bhairav · 112 portals of imagination</title>
+    <meta name="description" content="A cosmic meditation playground — where ancient tantra meets pure imagination.">
+    <!-- fonts & icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style-korean.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #030514;
+            color: #edeef7;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* ----- cosmic canvas (living background) ----- */
+        #cosmic-dream {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        /* main container */
+        .container {
+            position: relative;
+            z-index: 5;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+        }
+
+        /* ----- redefined glass with cosmic blur & glow ----- */
+        .glass-header, .path-card, .guide-card, .tech-list-item, .reflection-card, .practice-cta {
+            background: rgba(8, 12, 25, 0.4);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(140, 130, 255, 0.15);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(170, 130, 255, 0.1) inset, 0 0 30px rgba(100, 80, 255, 0.2);
+            transition: all 0.25s ease;
+        }
+
+        .glass-header {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            border-radius: 4rem;
+            background: rgba(5, 5, 20, 0.35);
+            border-color: rgba(200, 180, 255, 0.25);
+        }
+
+        .logo-area h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #f0eaff, #c7b9ff, #a6d0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        .logo-area .tagline {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #bbb0ff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .top-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-nav a {
+            color: #dbd0ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1.1rem;
+        }
+
+        .top-nav a.active, .top-nav a:hover {
+            color: white;
+            text-shadow: 0 0 12px #ae8eff;
+        }
+
+        .icon-link {
+            font-size: 1.3rem;
+        }
+
+        /* ----- hero with floating imagination ----- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 2rem 0 4rem;
+        }
+
+        .hero-content {
+            flex: 1 1 400px;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(210, 190, 255, 0.3);
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            margin-bottom: 1.5rem;
+            color: #d7c7ff;
+        }
+
+        .hero h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(145deg, #ffdcaa, #c1a6ff, #8ecfef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: #cdc6f0;
+            max-width: 550px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #a58cff;
+            padding-left: 1.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6149d9, #9f7aea);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 10px 25px #3f2d9b, 0 0 0 1px #b59eff inset;
+            transition: 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px #5f4bbf, 0 0 20px #b197ff;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #c7b5ff;
+        }
+
+        .hero-illustration {
+            flex: 0 0 300px;
+            height: 300px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orbit-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #9076ff, #1f1950);
+            box-shadow: 0 0 80px #7a5fff, 0 0 150px #4f378b;
+            animation: pulseGlow 6s infinite alternate;
+        }
+
+        .orbit-circle.small {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 40% 40%, #ffd966, #b86f2c);
+            box-shadow: 0 0 80px #ffb347;
+            top: 20px;
+            right: 20px;
+            animation: floatAround 12s infinite alternate;
+        }
+
+        .floating-shiva {
+            font-size: 5rem;
+            filter: drop-shadow(0 0 25px gold);
+            z-index: 2;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 120px #aa92ff; }
+        }
+
+        @keyframes floatAround {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        /* path cards */
+        .quick-paths, .little-guides, .featured-techniques, .daily-reflection, .practice-cta {
+            margin: 4rem 0;
+        }
+
+        h3 {
+            font-size: 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .arrow {
+            font-size: 2.2rem;
+            color: #b7a4ff;
+        }
+
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .path-card {
+            padding: 1.8rem 1rem;
+            text-align: center;
+            border-radius: 2rem;
+            cursor: default;
+            transition: 0.2s;
+            border-color: rgba(255, 255, 255, 0.05);
+            background: rgba(8, 12, 28, 0.35);
+        }
+
+        .path-card i {
+            font-size: 2.5rem;
+            background: linear-gradient(145deg, #f0d7ff, #917af0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .path-card span {
+            display: block;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #f0eaff;
+        }
+
+        .path-card small {
+            color: #ada5d4;
+            font-size: 0.8rem;
+        }
+
+        .path-card:hover {
+            background: rgba(40, 30, 70, 0.5);
+            border-color: #9c84ff;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px #a47eff;
+        }
+
+        /* guides */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-card {
+            padding: 1.8rem 1.5rem;
+            border-radius: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: rgba(10, 8, 25, 0.4);
+        }
+
+        .guide-avatar {
+            font-size: 4rem;
+            filter: drop-shadow(0 0 15px #dbbdff);
+            animation: float 4s infinite;
+        }
+
+        .guide-message {
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+            font-style: italic;
+            color: #f3ecff;
+        }
+
+        .guide-name {
+            color: #b8abff;
+            font-weight: 500;
+        }
+
+        /* featured techniques */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .view-all {
+            color: #ccbdff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-bottom: 1px dashed;
+        }
+
+        .tech-list-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1rem;
+            border-radius: 4rem;
+            transition: 0.2s;
+        }
+
+        .tech-list-item:hover {
+            background: rgba(30, 20, 60, 0.6);
+            border-color: #ad94ff;
+            transform: translateX(8px);
+        }
+
+        .tech-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #b7a1ff;
+            min-width: 70px;
+        }
+
+        .tech-info h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            color: #9a8fd0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .tech-duration {
+            margin-left: auto;
+            color: #e0d1ff;
+            background: rgba(255,255,255,0.02);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #363069;
+        }
+
+        .tech-action {
+            background: rgba(255,255,255,0.1);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #8670d9;
+        }
+
+        /* daily reflection */
+        .reflection-card {
+            padding: 3rem 4rem;
+            border-radius: 4rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(18px);
+            border: 1px solid #6f61b0;
+            box-shadow: 0 0 70px #513f9f33;
+            position: relative;
+        }
+
+        .quote-mark {
+            font-size: 8rem;
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            color: #7b64d1;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .quote {
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-author {
+            font-size: 1.3rem;
+            color: #c7b3ff;
+        }
+
+        .reflection-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .btn-text {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* practice cta */
+        .practice-cta {
+            padding: 3rem 4rem;
+            border-radius: 5rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-content h3 {
+            font-size: 2.8rem;
+            justify-content: center;
+        }
+
+        .timer-options {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .timer-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #7b6fc7;
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .timer-pill:hover {
+            background: #5c4bb0;
+            border-color: white;
+            box-shadow: 0 0 30px #9f7aea;
+        }
+
+        /* footer */
+        .footer-minimal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #2c2650;
+        }
+
+        .footer-links a {
+            color: #b9aff0;
+            margin-right: 2.5rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* responsive */
+        @media (max-width: 700px) {
+            .hero h2 { font-size: 3rem; }
+            .quote { font-size: 1.5rem; }
+            .reflection-card { padding: 2rem; }
+            .timer-options { flex-wrap: wrap; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Cosmic background animation (subtle stars) -->
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    
+    <canvas id="cosmic-dream"></canvas>
+
     <div class="container">
-        <!-- Header with glass effect -->
         <header class="glass-header">
             <div class="logo-area">
                 <h1>VIGYAN BHAIRAV</h1>
-                <p class="tagline">the 112 ways</p>
+                <p class="tagline">the 112 portals</p>
             </div>
             <nav class="top-nav">
                 <a href="#" class="active">Home</a>
@@ -37,154 +562,123 @@
             </nav>
         </header>
 
-        <!-- Hero Section -->
+        <!-- Hero section: imagination unleashed -->
         <section class="hero">
             <div class="hero-content">
-                <span class="chip">✨ Ancient · Modern · Cosmic</span>
-                <h2>Explore Your <span class="gradient-text">Inner Cosmos</span></h2>
-                <p class="hero-sub">112 meditation techniques from the Vigyan Bhairav Tantra,<br>reimagined for the modern seeker.</p>
+                <span class="chip">✨ 112 dimensions · pure imagination</span>
+                <h2>Enter your <span class="gradient-text">inner cosmos</span></h2>
+                <p class="hero-sub">Ancient tantra breathing techniques — now living inside a star.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary">Start Journey <i class="fas fa-arrow-right"></i></a>
-                    <a href="#" class="btn-outline">Explore Techniques</a>
+                    <a href="#" class="btn-primary">Start portal <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn-outline">Explore 112 ways</a>
                 </div>
             </div>
             <div class="hero-illustration">
-                <!-- Simple cosmic illustration via CSS -->
                 <div class="orbit-circle"></div>
                 <div class="orbit-circle small"></div>
-                <div class="floating-shiva">👶🕉️</div>
+                <div class="floating-shiva">👁️🕉️👁️</div>
             </div>
         </section>
 
-        <!-- Quick Paths / Personas (Korean style chips) -->
+        <!-- Quick paths – like cosmic gems -->
         <section class="quick-paths">
-            <h3>Choose your path <span class="arrow">→</span></h3>
+            <h3>Choose your vibration <span class="arrow">→</span></h3>
             <div class="path-grid">
-                <div class="path-card" data-path="focus">
-                    <i class="fas fa-bullseye"></i>
-                    <span>Focus</span>
-                    <small>for students & deep work</small>
-                </div>
-                <div class="path-card" data-path="calm">
-                    <i class="fas fa-leaf"></i>
-                    <span>Calm</span>
-                    <small>stress relief</small>
-                </div>
-                <div class="path-card" data-path="aware">
-                    <i class="fas fa-eye"></i>
-                    <span>Awareness</span>
-                    <small>observe thoughts</small>
-                </div>
-                <div class="path-card" data-path="deep">
-                    <i class="fas fa-moon"></i>
-                    <span>Deep</span>
-                    <small>inner silence</small>
-                </div>
-                <div class="path-card" data-path="energy">
-                    <i class="fas fa-bolt"></i>
-                    <span>Energy</span>
-                    <small>kundalini</small>
-                </div>
-                <div class="path-card" data-path="heart">
-                    <i class="fas fa-heart"></i>
-                    <span>Heart</span>
-                    <small>love & devotion</small>
-                </div>
+                <div class="path-card" data-path="focus"><i class="fas fa-bullseye"></i><span>Focus</span><small>deep work portal</small></div>
+                <div class="path-card" data-path="calm"><i class="fas fa-leaf"></i><span>Calm</span><small>stress dissolve</small></div>
+                <div class="path-card" data-path="aware"><i class="fas fa-eye"></i><span>Awareness</span><small>witness thoughts</small></div>
+                <div class="path-card" data-path="deep"><i class="fas fa-moon"></i><span>Deep</span><small>inner silence</small></div>
+                <div class="path-card" data-path="energy"><i class="fas fa-bolt"></i><span>Energy</span><small>kundalini hum</small></div>
+                <div class="path-card" data-path="heart"><i class="fas fa-heart"></i><span>Heart</span><small>cosmic love</small></div>
             </div>
         </section>
 
-        <!-- Little Guides (character cards) -->
+        <!-- little spirit guides with floating wisdom -->
         <section class="little-guides">
-            <h3>Today's little guides <span class="arrow">→</span></h3>
+            <h3>whispers from the void <span class="arrow">→</span></h3>
             <div class="guides-grid">
                 <div class="guide-card">
-                    <div class="guide-avatar">👶🕉️</div>
-                    <div class="guide-message">
-                        "Just watch — like watching clouds."
-                    </div>
-                    <span class="guide-name">Little Shiva</span>
+                    <div class="guide-avatar">👁️‍🗨️🌀</div>
+                    <div class="guide-message">"Between two breaths, the universe hides."</div>
+                    <span class="guide-name">Shiva's whisper</span>
                 </div>
                 <div class="guide-card">
-                    <div class="guide-avatar">👶🌊</div>
-                    <div class="guide-message">
-                        "Be like water, little one."
-                    </div>
-                    <span class="guide-name">Little Lao Tzu</span>
+                    <div class="guide-avatar">🌙🧘</div>
+                    <div class="guide-message">"You are the sky. thoughts are clouds."</div>
+                    <span class="guide-name">Tiny Lao</span>
                 </div>
                 <div class="guide-card">
-                    <div class="guide-avatar">👶🌀</div>
-                    <div class="guide-message">
-                        "Energy is dancing within you."
-                    </div>
-                    <span class="guide-name">Tiny Tantrika</span>
+                    <div class="guide-avatar">✨🔮</div>
+                    <div class="guide-message">"Energy spirals — feel the dance."</div>
+                    <span class="guide-name">Starlight Tantrika</span>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Techniques (clean list style) -->
+        <!-- Featured techniques with glowing interaction -->
         <section class="featured-techniques">
             <div class="section-header">
-                <h3>Featured techniques</h3>
-                <a href="#" class="view-all">View all 112 <i class="fas fa-arrow-right"></i></a>
+                <h3>✨ 112 techniques — 112 gateways</h3>
+                <a href="#" class="view-all">all portals <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="tech-list">
                 <div class="tech-list-item">
                     <span class="tech-number">#15</span>
                     <div class="tech-info">
-                        <h4>Witnessing the Breath</h4>
+                        <h4>Witnessing the breath cloud</h4>
                         <span class="tech-tags">focus · calm · beginner</span>
                     </div>
                     <span class="tech-duration">5-15 min</span>
-                    <a href="technique-15.html" class="tech-action"><i class="fas fa-play"></i></a>
+                    <a href="#" class="tech-action"><i class="fas fa-play"></i></a>
                 </div>
                 <div class="tech-list-item">
                     <span class="tech-number">#42</span>
                     <div class="tech-info">
-                        <h4>The Pause Between Breaths</h4>
-                        <span class="tech-tags">silence · overthinking · advanced</span>
+                        <h4>The pause between universes</h4>
+                        <span class="tech-tags">silence · advanced · cosmic</span>
                     </div>
                     <span class="tech-duration">5-15 min</span>
-                    <a href="technique-42.html" class="tech-action"><i class="fas fa-play"></i></a>
+                    <a href="#" class="tech-action"><i class="fas fa-play"></i></a>
                 </div>
                 <div class="tech-list-item">
                     <span class="tech-number">#3</span>
                     <div class="tech-info">
-                        <h4>The Heart Center</h4>
-                        <span class="tech-tags">heart · love · calm</span>
+                        <h4>Heart center supernova</h4>
+                        <span class="tech-tags">heart · love · expansion</span>
                     </div>
                     <span class="tech-duration">5-15 min</span>
-                    <a href="technique-3.html" class="tech-action"><i class="fas fa-play"></i></a>
+                    <a href="#" class="tech-action"><i class="fas fa-play"></i></a>
                 </div>
                 <div class="tech-list-item">
                     <span class="tech-number">#48</span>
                     <div class="tech-info">
-                        <h4>The Delight of Meeting</h4>
+                        <h4>The delight of meeting stars</h4>
                         <span class="tech-tags">emotion · seeker · joy</span>
                     </div>
                     <span class="tech-duration">2-10 min</span>
-                    <a href="technique-48.html" class="tech-action"><i class="fas fa-play"></i></a>
+                    <a href="#" class="tech-action"><i class="fas fa-play"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Daily Reflection / Quote -->
+        <!-- daily reflection / cosmic quote -->
         <section class="daily-reflection">
             <div class="reflection-card">
-                <span class="quote-mark">"</span>
-                <p class="quote">Awareness is the greatest transformation.<br>Meditation is not about controlling the mind.<br>It is about observing it.</p>
-                <p class="quote-author">— Osho</p>
+                <span class="quote-mark">“</span>
+                <p class="quote">Awareness is not a path — it is the space in which stars are born. Meditation is just watching that birth.</p>
+                <p class="quote-author">— tantric sky</p>
                 <div class="reflection-footer">
-                    <span class="chip">daily reflection</span>
-                    <a href="#" class="btn-text">Share <i class="fas fa-share"></i></a>
+                    <span class="chip">daily starlight</span>
+                    <a href="#" class="btn-text">share this <i class="fas fa-share"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Start Practice CTA -->
+        <!-- practice with cosmic timer -->
         <section class="practice-cta">
             <div class="cta-content">
-                <h3>Ready to begin?</h3>
-                <p>Choose a duration and start your practice with a gentle timer.</p>
+                <h3>🌌 begin your journey</h3>
+                <p>set a duration — the cosmos will time itself</p>
                 <div class="timer-options">
                     <a href="#" class="timer-pill" data-minutes="5">5 min</a>
                     <a href="#" class="timer-pill" data-minutes="10">10 min</a>
@@ -194,7 +688,6 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="footer-minimal">
             <div class="footer-links">
                 <a href="#">Home</a>
@@ -203,10 +696,127 @@
                 <a href="#">Practice</a>
                 <a href="#">Cosmos</a>
             </div>
-            <p class="footer-copyright">© 2026 Vigyan Bhairav · 112 ways</p>
+            <div>🜁 112 portals · pure imagination</div>
         </footer>
     </div>
 
-    <script src="script-korean.js"></script>
+    <!-- cosmic canvas animation: living star field with soft parallax -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('cosmic-dream');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let stars = [];
+            let mouseX = 0, mouseY = 0;
+            const STAR_COUNT = 300;
+
+            function initStars() {
+                for (let i = 0; i < STAR_COUNT; i++) {
+                    stars.push({
+                        x: Math.random(),
+                        y: Math.random(),
+                        radius: Math.random() * 1.7 + 0.3,
+                        speed: 0.0001 + Math.random() * 0.0004,
+                        phase: Math.random() * 2 * Math.PI,
+                        baseBrightness: Math.random() * 0.6 + 0.3,
+                    });
+                }
+            }
+
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            function drawStars() {
+                ctx.clearRect(0, 0, width, height);
+                const time = Date.now() / 1000;
+
+                // subtle nebula background gradients
+                const grad = ctx.createRadialGradient(width*0.7, height*0.3, 100, width*0.7, height*0.3, width*0.8);
+                grad.addColorStop(0, 'rgba(35, 10, 55, 0.2)');
+                grad.addColorStop(0.5, 'rgba(10, 5, 30, 0.4)');
+                grad.addColorStop(1, 'rgba(0, 0, 10, 0.7)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, width, height);
+
+                // draw stars
+                for (let s of stars) {
+                    // subtle mouse parallax: move stars opposite to mouse
+                    let offsetX = (mouseX / width - 0.5) * 30 * s.radius; 
+                    let offsetY = (mouseY / height - 0.5) * 30 * s.radius;
+
+                    let x = (s.x * width + offsetX) % width;
+                    let y = (s.y * height + offsetY) % height;
+
+                    // twinkling
+                    let twinkle = Math.sin(time * 2 + s.phase) * 0.3 + 0.7;
+                    let brightness = Math.min(1, s.baseBrightness * twinkle);
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, s.radius * (1 + 0.3 * Math.sin(time * 3 + s.phase)), 0, 2 * Math.PI);
+                    ctx.fillStyle = `rgba(255, 240, 250, ${brightness})`;
+                    ctx.fill();
+
+                    // occasional glow for larger stars
+                    if (s.radius > 1.0) {
+                        ctx.shadowColor = '#cbaaff';
+                        ctx.shadowBlur = 6;
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                }
+
+                // occasional shooting star (random)
+                if (Math.random() < 0.002) {
+                    drawShootingStar();
+                }
+
+                requestAnimationFrame(drawStars);
+            }
+
+            function drawShootingStar() {
+                const startX = Math.random() * width * 0.8 + 0.1 * width;
+                const startY = Math.random() * height * 0.3;
+                const length = 100 + Math.random() * 150;
+                const angle = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
+                const dx = Math.cos(angle) * length;
+                const dy = Math.sin(angle) * length;
+
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(startX + dx, startY + dy);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.lineWidth = 1.5;
+                ctx.shadowColor = 'white';
+                ctx.shadowBlur = 12;
+                ctx.stroke();
+
+                // tip glow
+                ctx.beginPath();
+                ctx.arc(startX + dx, startY + dy, 3, 0, 2*Math.PI);
+                ctx.fillStyle = 'white';
+                ctx.shadowBlur = 18;
+                ctx.fill();
+
+                ctx.shadowBlur = 0;
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+            });
+
+            initStars();
+            resizeCanvas();
+            drawStars();
+        })();
+    </script>
 </body>
-    </html>
+                </html>                        
